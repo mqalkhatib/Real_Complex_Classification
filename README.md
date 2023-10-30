@@ -17,4 +17,3 @@ Model was qualitatively evaluated by visually comparing the resulting class maps
 ![image](https://github.com/mqalkhatib/Real_Complex_Classification/assets/49251659/28795e44-49c0-44bc-a61e-ca5c4f27ee04)
 
 Feel Free to contact me on: mqalkhatib@ieee.org
-https://scholar.google.ae/citations?user=Xvne-PoAAAAJ&hl=en
