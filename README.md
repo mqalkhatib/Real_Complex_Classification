@@ -1,1 +1,1 @@
-# Real_Complex_Classification
+# Attention based Dual-Branch Complex Feature Fusion Network for Hyperspectral Image Classification
