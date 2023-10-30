@@ -68,7 +68,7 @@ model.summary()
 history = model.fit({"x":X_train,"x_fft":X_fft_train}, ytrain,
                         batch_size = 16, 
                         verbose=1, 
-                        epochs=20, 
+                        epochs=100, 
                         shuffle=True, 
                         #class_weight = class_weights,
                         callbacks = [early_stopper])
