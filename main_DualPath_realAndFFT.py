@@ -11,19 +11,17 @@ from model_DualPath_realAndFFT import dual_Path, dual_Path_with_SE
 
 
 ## GLOBAL VARIABLES
-dataset = 'PU' #input("select the data set:\nPU for pavia\nSA for Salinas\nIP for indian pines\nGP for GulfPort\n") 
-train_percentage = 0.01 #float(input("Enter the Train percentage\n"))/100
+dataset = 'PU' 
+train_percentage = 0.01 
 test_ratio = 1 - train_percentage
-windowSize = 13 #int(input("Enter the window size\n"))
-PCA_comp = 15 #int(input("Enter the number of PCs\n"))
+windowSize = 13 
+PCA_comp = 15 
 
 X, y = loadData(dataset)
 
 
 # Apply PCA for dimensionality reduction
 X,pca = applyPCA(X,PCA_comp)
-plt.imshow(X[:,:,1], cmap = 'gray'), plt.colorbar(), plt.axis('off')
-
 
 X, y = createImageCubes(X, y, windowSize=windowSize)
 
@@ -73,11 +71,6 @@ history = model.fit({"x":X_train,"x_fft":X_fft_train}, ytrain,
                         #class_weight = class_weights,
                         callbacks = [early_stopper])
     
-# model.save_weights('./Models_Weights/'+ dataset +'/dualPathRealAndFFT/winSize_' + str(windowSize) + '_' + str(PCA_comp) + '_pca_model_' + str(i)+'.h5')
-    
-# model.load_weights('./Models_Weights/'+ dataset +'/dualPathRealAndFFT/winSize_' + str(windowSize) + '_' + str(PCA_comp) + '_pca_model_' + str(i)+'.h5')
-
-    
     
 Y_pred_test = model.predict([X_test, X_fft_test] )
 y_pred_test = np.argmax(Y_pred_test, axis=1)
@@ -106,7 +99,7 @@ X = padWithZeros(X, windowSize//2)
 model = dual_Path_with_SE(X_train, X_fft_train, num_classes(dataset))
 model.summary()
 
-# calculate the predicted image, this is a pixel wise operation, will take long time
+# Generate the predicted image, a pixel/patch wise operation, will take long time
 outputs = np.zeros((height,width))
 for i in range(height):
     for j in range(width):
