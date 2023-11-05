@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Feb  7 09:21:37 2022
-
-@author: malkhatib
+@author: mqalkhatib (mqalkhatib@ieee.org)
 """
 import scipy.io as sio
 import os
