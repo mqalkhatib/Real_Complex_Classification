@@ -175,7 +175,7 @@ def getFFT(X):
     for ii in range(len(X)):
         for jj in range(X.shape[3]):
             X_fft[ii,:,:,jj] = fftshift(fft2(X[ii,:,:,jj])) 
-            X_fft[ii,:,:,jj] = fftshift(fft2(X[ii,:,:,jj])) 
+            #X_fft[ii,:,:,jj] = fftshift(fft2(X[ii,:,:,jj])) 
             
             
     return X_fft
