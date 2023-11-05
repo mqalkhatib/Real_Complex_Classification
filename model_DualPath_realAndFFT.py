@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon May 30 15:03:56 2022
-
-@author: mqalk
+@author: mqalkhatib
 """
 
 from tensorflow.keras.layers import Conv3D, Conv2D, Conv1D
@@ -131,34 +128,3 @@ def GlobalCmplxAveragePooling3D(inputs):
            output = output_r
     
     return output
-
-'''   
-def cmplx_SE_Block_2D(xin, se_ratio = 8):
-    # Squeeze Path
-    xin_gap =  GlobalCmplxAveragePooling2D(xin)
-    sqz = complex_layers.ComplexDense(xin.shape[-1]//se_ratio, activation='cart_relu')(xin_gap)
-    
-    # Excitation Path
-    excite1 = complex_layers.ComplexDense(xin.shape[-1], activation='cart_sigmoid')(sqz)
-    
-    out = tf.keras.layers.multiply([xin, excite1])
-    
-    return out
-
-
-
-def GlobalCmplxAveragePooling2D(inputs):
-    inputs_r = tf.math.real(inputs)
-    inputs_i = tf.math.imag(inputs)
-    
-    output_r = tf.keras.layers.GlobalAveragePooling2D()(inputs_r)
-    output_i = tf.keras.layers.GlobalAveragePooling2D()(inputs_i)
-    
-    if inputs.dtype == 'complex' or inputs.dtype == 'complex64' or inputs.dtype == 'complex128':
-           output = tf.complex(output_r, output_i)
-    else:
-           output = output_r
-    
-    return output
-
-'''
