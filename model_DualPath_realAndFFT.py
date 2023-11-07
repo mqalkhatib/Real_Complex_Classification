@@ -103,6 +103,7 @@ def dual_Path_with_SE(x, x_fft, num_class):
 import cvnn.layers as complex_layers
 def cmplx_SE_Block(xin, se_ratio = 8):
     # Squeeze Path
+    xin = tf.transpose(xin, perm=[0, 1, 2, 4, 3])
     xin_gap =  GlobalCmplxAveragePooling3D(xin)
     sqz = complex_layers.ComplexDense(xin.shape[-1]//se_ratio, activation='cart_relu')(xin_gap)
     
@@ -110,7 +111,7 @@ def cmplx_SE_Block(xin, se_ratio = 8):
     excite1 = complex_layers.ComplexDense(xin.shape[-1], activation='cart_sigmoid')(sqz)
     
     out = tf.keras.layers.multiply([xin, excite1])
-    
+    out = tf.transpose(out, perm=[0, 1, 2, 4, 3])
     return out
     
    
